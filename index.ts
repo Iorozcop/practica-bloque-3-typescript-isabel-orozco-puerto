@@ -8,7 +8,13 @@
 import { UserData } from "./user-data";
 
 let user: UserData;
+user = { name: "Pepe", age: 45, phone: 666545787 };
 
+//llamadas al método
+getData<string>(user.name);
+getData<number>(user.phone);
+
+//función que recoge un dato de tipo generico y saca por consola ese dato
 function getData<T>(arg: T): void {
   if (isNumber(arg)) {
     console.log(arg + " es un número");
@@ -17,11 +23,9 @@ function getData<T>(arg: T): void {
   }
 }
 
+//funcion type Guard para comprobar de que tipo es el dato
 function isNumber<T>(data: T): data is T {
   return typeof data === "number";
 }
 
-user = { name: "Pepe", age: 45, phone: 666545787 };
 
-let nombre = getData<string>(user.name);
-let telefono = getData<number>(user.phone);
